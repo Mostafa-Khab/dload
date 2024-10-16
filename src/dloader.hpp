@@ -15,13 +15,14 @@
 #if defined(WIN32)
   #include <windows.h>
   #define dlopen LoadLibrary
-  #define LIB_HANDLE HINSTANCE
+  #define DLIB_HANDLE HINSTANCE
   #define dlsym GetProcAddress
-  #define SUFFIX "dll"
+  #define DLSUFFIX "dll"
+  #define dlclose FreeLibrary
 #else
   #include <dlfcn.h>
-  #define LIB_HANDLE void*
-  #define SUFFIX "so"
+  #define DLIB_HANDLE void*
+  #define DLSUFFIX "so"
   #define dlopen(X) dlopen(X, RTLD_NOW)
 #endif
 

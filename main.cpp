@@ -4,11 +4,10 @@
 
 int main(int argc, const char* argv[])
 {
-  LIB_HANDLE library = dlopen("libplug." SUFFIX);
+  DLIB_HANDLE library = dlopen("libplug." DLSUFFIX);
 
-  const char* lib_path = "libplug." SUFFIX;
+  const char* lib_path = "libplug." DLSUFFIX;
   if(!library) {
-  
     std::cerr << "failed to load requested library\n";
     return -1;
   }
@@ -27,6 +26,10 @@ int main(int argc, const char* argv[])
     return -1;
   }
 
-  output("hello from dll you Idiot");
+  output("hello from dll you Idiot"); // the loaded function
   std::cout << "func value: " << func() << '\n';
+
+  dlclose(library);
+
+  return 0;
 }
