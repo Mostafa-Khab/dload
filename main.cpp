@@ -4,9 +4,9 @@
 
 int main(int argc, const char* argv[])
 {
-  DLIB_HANDLE library = dlopen("libplug." DLSUFFIX);
+  DLIB_HANDLE library = dlopen("libplug");
 
-  const char* lib_path = "libplug." DLSUFFIX;
+  //const char* lib_path = "libplug." DLSUFFIX;
   if(!library) {
     std::cerr << "failed to load requested library\n";
     return -1;

@@ -8,7 +8,7 @@
 
 #include "dloader.hpp"
 
-typedef int  (EXPORTING *func_t)();
-typedef void (EXPORTING *ouput_t)(const char*);
+typedef int  (/*EXPORTING*/ *func_t)();
+typedef void (/*EXPORTING*/ *ouput_t)(const char*);
 
 #endif /* !PLUG_HPP */

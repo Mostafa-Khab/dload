@@ -6,3 +6,6 @@ A simple cross platform library intended for using in Apps where hot reloading C
 - to get the hot reload you can dlclose a library handle then re-dlopen the library.
 
 See [main.cpp](main.cpp) for more info
+
+# Tips
+- for creating dynamic library see [Makefile](Makefile)

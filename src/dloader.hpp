@@ -7,23 +7,23 @@
 #define DLOADER_HPP
 
 #if defined(WIN32)
-  #define EXPORTING __declspec(dllexport) __stdcall
+  #define EXPORTING __declspec(dllexport) //__stdcall
 #else
   #define EXPORTING
 #endif
 
 #if defined(WIN32)
   #include <windows.h>
-  #define dlopen LoadLibrary
+  #define DLSUFFIX ".dll"
+  #define dlopen(X) LoadLibrary(X DLSUFFIX)
   #define DLIB_HANDLE HINSTANCE
   #define dlsym GetProcAddress
-  #define DLSUFFIX "dll"
   #define dlclose FreeLibrary
 #else
   #include <dlfcn.h>
   #define DLIB_HANDLE void*
-  #define DLSUFFIX "so"
-  #define dlopen(X) dlopen(X, RTLD_NOW)
+  #define DLSUFFIX ".so"
+  #define dlopen(X) dlopen(X DLLSUFFIX, RTLD_NOW)
 #endif
 
 #endif /* !DLOADER_HPP */

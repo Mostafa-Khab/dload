@@ -1,14 +1,13 @@
-main: main.cpp libplug.so
+main: main.cpp libplug.dll
 	g++ main.cpp -Wl,-rpath,.,-rpath,build -o build/main
 	./build/main
 
-libplug.so: src/plug.*
-	g++ -fPIC -shared -Wl,-rpath,. src/plug.cpp -o build/libplug.so
+libplug.dll: src/plug.*
+	g++ -fPIC -shared -Wl,-rpath,. src/plug.cpp -o build/libplug.dll
 
 win64:
-	x86_64-w64-mingw32-g++ -fPIC -shared -Wl,-rpath,. src/plug.cpp -o build/libplug.dll
-	x86_64-w64-mingw32-g++ main.cpp -Wl,-rpath,.,-rpath,build -o build/main
-	wine ./build/main.exe
+	g++ -fPIC -shared -Wl,-rpath,. src/plug.cpp -o build/libplug.dll
+	g++ main.cpp -Wl,-rpath,.,-rpath,build -o build/main
 
 clean:
 	rm build/*
