@@ -3,7 +3,7 @@
 
 int EXPORTING func()
 {
-  return 11;
+  return 15;
 }
 
 void EXPORTING output(const char* msg)
